@@ -33,3 +33,6 @@ async def check_location(request: Request):
             return {
                 "message" : "Data error"
             }
+
+
+        # 41.97779999064488, -87.71722227283024
