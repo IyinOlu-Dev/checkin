@@ -24,7 +24,7 @@ async def home():
     return {"message": "Api reached successfully"}
 
 
-@app.get("/api/location",)
+@app.post("/api/location",)
 async def locate(data: LocationData):
 
 
