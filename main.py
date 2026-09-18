@@ -1,38 +1,34 @@
-from fastapi import FastAPI, Request
-import httpx
+from fastapi import FastAPI
+from pydantic import BaseModel
 import json
 
 app = FastAPI()
 
 
+
+
+class LocationData(BaseModel):
+    lat : float
+    lng: float
+
 @app.get("/")
 async def home():
-    return ("message")
+    return {"message": "Api reached successfully"}
 
 
-@app.get("/home")
-async def check_location(request: Request):
-
-    if request.client is None:
-        return {"message":"Client information not available"}
-
-    client_ip = request.client.host
-
-    if client_ip in ("127.0.0.1", "::1"):
-        return {
-            "message" : "You are in local host"
-        }
-
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.get(f"https://ipapi.co/{client_ip}/json")
-            geo_data = response.json()
-            return geo_data
-        except Exception:
-            geo_data = {}
-            return {
-                "message" : "Data error"
-            }
+@app.get("/api/location",)
+async def locate(data: LocationData):
 
 
+    longitude = data.lng
+    latitude = data.lat
+
+    print (f" Received Location -> latitude: {latitude} & Longitude : {longitude} ")
+
+    return {
+        "status" : "Successful",
+        "message": "Location reached successfully",
+        "latitude" : latitude,
+        "longitude" : longitude
+    }
         # 41.97779999064488, -87.71722227283024
