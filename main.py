@@ -1,11 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+
+from fastapi.middleware.cors import CORSMiddleware
 import json
 
 app = FastAPI()
 
-
-
+origins = [
+    CORSMiddleware,
+    allow_origins = ["*"],
+    allow_methods = ["*"]
+    allow_headers=["*"]
+]
 
 class LocationData(BaseModel):
     lat : float
