@@ -13,7 +13,7 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
 
             try {
                 // FIXED: Updated URL to your actual Render backend (or use http://127.0.0.1:8000/api/location for local testing)
-                const response = await fetch('https://checkin-1-5nso.onrender.com/api/location', {
+                const response = await fetch('https://https://checkin-vmcb.onrender.com/api/location', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
