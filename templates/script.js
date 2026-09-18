@@ -21,8 +21,24 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
             
         );
 
-        try{
-            const response = await fetch(`https://https://checkin-vmcb.onrender.com/`)
+        try {
+                const response = await fetch('https://your-backend-api.com/api/location', {
+                    method: 'POST',
+                    headers: {'Content-Tyoe': 'application/json',
+                    },
+
+                    body: JSON.stringify({
+                        lat: latitude,
+                        lng: longitude,
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to send location Data to server')
+                }
+                console.log(Error)
+            
+        
         }
-    }
+    
 );
