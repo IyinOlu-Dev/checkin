@@ -39,4 +39,5 @@ async def locate(data: LocationData):
         "latitude" : latitude,
         "longitude" : longitude
     }
+
         # 41.97779999064488, -87.71722227283024
