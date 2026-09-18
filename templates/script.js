@@ -1,20 +1,22 @@
-function sendUserLocation() {
+document.getElementById('getLocationBtn').addEventListener('click', function() {
     if (!navigator.geolocation) {
-        alert("Geolocation not supported by your browser");
+        alert("Geolocation is not supported by your browser");
         return;
     }
 
-    const options = {
-        enableHighAccuracy : true,
-        timeout : 10000,
-        maximumAge: 0,
-    };
-
     navigator.geolocation.getCurrentPosition(
-        async (position) =>{
+        (position) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-
-            console.log(` Latitude : ${latitude}, Longitude : ${longitude}`)
-        })
-}
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        },
+        (error) => {
+            console.error("Error getting location:", error.message);
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+});
