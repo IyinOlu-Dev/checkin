@@ -5,11 +5,11 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
         }
 
     navigator.geolocation.getCurrentPosition(
-        (position) => {
+        async (position) => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-            },
+
         (error) => {
             console.error("Error getting location:", error.message);
             },
@@ -19,12 +19,12 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
             maximumAge: 0
             }
             
-        );
 
-        try {
+
+            try {
                 const response = await fetch('https://your-backend-api.com/api/location', {
                     method: 'POST',
-                    headers: {'Content-Tyoe': 'application/json',
+                    headers: {'Content-Type': 'application/json',
                     },
 
                     body: JSON.stringify({
@@ -36,9 +36,13 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
                 if (!response.ok) {
                     throw new Error('Failed to send location Data to server')
                 }
-                console.log(Error)
-            
-        
+                
+                const result = await response.json();
+                console.log('Server Response', result);
+
         }
+        catch(error){
+            console.error("Error getting location", error.message)
+        };
     
-);
+})});
