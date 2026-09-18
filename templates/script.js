@@ -22,7 +22,9 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
 
 
             try {
-                const response = await fetch('https://your-backend-api.com/api/location', {
+                const response = await fetch('[https://checkin-1-5mso.onrender.com]',
+                    '(https://checkin-vmcb.onrender.com/api/location)', 
+                    '(http://127.0.0.1:8000)',{
                     method: 'POST',
                     headers: {'Content-Type': 'application/json',
                     },
