@@ -31,7 +31,7 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
                 const result = await response.json();
                 console.log('Server Response', result);
 
-                if (result.checkin_status == True) {
+                if (result.checkin_status == true) {
                     alert("Sucess: You are clocked in")
                 }else {
                     alert ("You are too far away to clock in")
