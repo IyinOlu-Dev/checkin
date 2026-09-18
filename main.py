@@ -6,13 +6,15 @@ import json
 
 app = FastAPI()
 
-origins = [
-    CORSMiddleware,
-    allow_origins = ["*"],
-    allow_methods = ["*"]
-    allow_headers=["*"]
-]
+origins = ["*"]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_headers=["*"]
+    allow_credentials=True,
+    allow_methods=["*"]
+)
 class LocationData(BaseModel):
     lat : float
     lng: float
