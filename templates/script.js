@@ -9,14 +9,16 @@ document.getElementById('getLocationBtn').addEventListener('click', function() {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-        },
-        (error) => {
-            console.error("Error getting location:", error.message);
-        },
-        {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0
-        }
-    );
-});
+        })},
+    //     (error) => {
+    //         console.error("Error getting location:", error.message);
+    //     },
+    //     {
+    //         enableHighAccuracy: true,
+    //         timeout: 10000,
+    //         maximumAge: 0
+    //     }
+    // );
+// 
+
+)
